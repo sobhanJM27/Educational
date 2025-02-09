@@ -41,6 +41,7 @@ const Sidebar = ({ show, func }: SideBarProps) => {
                 key={tab.id}
                 url={tab.url}
                 isDropdown={tab.isDropdown ? true : false}
+                links={tab.links}
               >
                 {tab.name}
               </Tab>

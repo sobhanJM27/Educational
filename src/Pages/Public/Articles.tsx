@@ -4,6 +4,7 @@ import IconWrapper from "../../Components/UI/IconWrapper";
 import LeftArrow from "../../Components/UI/Icons/LeftArrow";
 import SeoTags from "../../utils/lib/Helmet";
 import CardsWithFilter from "../../Components/CardsWithFilter";
+import { useParams } from "react-router-dom";
 
 const Articles = () => {
   const CardsRef = useRef<HTMLDivElement | null>(null);
@@ -11,6 +12,7 @@ const Articles = () => {
   const handleSwitch = () => {
     CardsRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+  const { category } = useParams();
   return (
     <>
       <SeoTags
@@ -42,7 +44,7 @@ const Articles = () => {
             </div>
           </div>
         </ParallaxHeader>
-        <CardsWithFilter type="article" ref={CardsRef} />
+        <CardsWithFilter type="article" ref={CardsRef} category={category} />
       </main>
     </>
   );

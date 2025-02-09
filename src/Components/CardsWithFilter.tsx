@@ -20,11 +20,12 @@ const CardsWithFilter = forwardRef<HTMLDivElement, Props>((props, ref) => {
   });
   let { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: [`filterproducts:${props.type}:${props.category}`],
-    queryFn: () =>
-      filterProducts({
+    queryFn: () => {
+      const categoryKey =
+        props.type === "course" ? "curseCategory" : "categoryBlog";
+      return filterProducts({
         type: props.type === "article" ? "blog" : props.type,
-        curseCategory:
-          props.type === "course" && props.category ? props.category : null,
+        [categoryKey]: props.category,
         query:
           queryParameters.get("sort") === ""
             ? null
@@ -33,7 +34,8 @@ const CardsWithFilter = forwardRef<HTMLDivElement, Props>((props, ref) => {
           queryParameters.get("search") === ""
             ? null
             : queryParameters.get("search"),
-      }),
+      });
+    },
     enabled:
       queryParameters.get("search") != null ||
       queryParameters.get("sort") != null

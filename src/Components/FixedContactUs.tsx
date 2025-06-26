@@ -1,21 +1,17 @@
 import ContactUsCharachter from './UI/images/ContactUsCharachter';
 import { cn } from '../utils/lib/Cn';
 import PhoneIcon from './UI/Icons/PhoneIcon';
-import MessageIcon from './UI/Icons/MessageIcon';
 import useClickActive from '../hooks/useClickActive';
 import Close from './UI/Icons/Close';
 import Itaa from './UI/Icons/Itaa';
 import GrayWhatsapp from './UI/Icons/GrayWhatsapp';
-import Class from './UI/Icons/Class';
 import Instagram from './UI/Icons/Instagram';
 
 const FixedContactUs = () => {
     const { isActive, toggleActive } = useClickActive(true);
     const { isActive: phoneActive, toggleActive: togglePhoneActive } = useClickActive(true);
-    const { isActive: msgActive, toggleActive: toggleMsgActive } = useClickActive(true);
     const { isActive: telegramActive, toggleActive: toggleTelegramActive } = useClickActive(true);
     const { isActive: itaaActive, toggleActive: toggleItaaActive } = useClickActive(true);
-    const { isActive: freeActive, toggleActive: toggleFreeActive } = useClickActive(true);
     const { isActive: instaActive, toggleActive: toggleInstaActive } = useClickActive(true);
     return (
         <div className='fixed bottom-16 left-1 w-20 h-20 cursor-pointer z-50 text-xs'>
@@ -46,17 +42,6 @@ const FixedContactUs = () => {
                     </div>
                     <div
                         className={cn(
-                            'p-2 bg-black rounded-full transition-all duration-500 hover:bg-[#4CAF50] shadow-contactCard opacity-30 -translate-x-3',
-                            {
-                                'opacity-100 translate-x-0': isActive,
-                                'bg-[#4CAF50]': freeActive,
-                            }
-                        )}
-                        onClick={toggleFreeActive}>
-                        <Class id='main-free-class' fill='white' />
-                    </div>
-                    <div
-                        className={cn(
                             'p-2 bg-black rounded-full transition-all duration-500 hover:bg-[#25D366] shadow-contactCard opacity-30 -translate-x-3',
                             {
                                 'opacity-100 translate-x-0': isActive,
@@ -79,20 +64,6 @@ const FixedContactUs = () => {
                     </div>
                     <div
                         className={cn(
-                            'p-2 bg-black group rounded-full transition-all duration-500 hover:bg-[#FFEB3B] shadow-contactCard opacity-30 -translate-x-3',
-                            {
-                                'opacity-100 translate-x-0': isActive,
-                                'bg-[#FFEB3B]': msgActive,
-                            }
-                        )}
-                        onClick={toggleMsgActive}>
-                        <MessageIcon
-                            id='main-MessageIcon'
-                            className={cn('fill-white group-hover:fill-black', { 'fill-black': msgActive })}
-                        />
-                    </div>
-                    <div
-                        className={cn(
                             'p-2 bg-black rounded-full transition-all duration-500 hover:bg-[#64a964] shadow-contactCard opacity-30 -translate-x-3',
                             {
                                 'opacity-100 translate-x-0': isActive,
@@ -106,7 +77,7 @@ const FixedContactUs = () => {
             </div>
             <div
                 className={cn(
-                    'absolute left-[60%] -top-[290px] flex pointer-events-none justify-end min-w-max z-10 px-6 pr-9 py-2 rounded-full bg-[#FF9800] text-white opacity-0 transition-all duration-300 translate-x-2',
+                    'absolute left-[60%] -top-[200px] flex pointer-events-none justify-end min-w-max z-10 px-6 pr-9 py-2 rounded-full bg-[#FF9800] text-white opacity-0 transition-all duration-300 translate-x-2',
                     {
                         'opacity-100 translate-x-0 pointer-events-auto': phoneActive,
                         'opacity-0 translate-x-2 pointer-events-none': !isActive,
@@ -119,24 +90,11 @@ const FixedContactUs = () => {
                 </a>
             </div>
             <a
-                href={`/Article/66982119b81fb6d998b0308d/%D9%85%DB%8C%D9%86%DB%8C-%D8%AF%D9%88%D8%B1%D9%87`}
-                rel='noopener noreferrer'
-                target='_blank'
-                className={cn(
-                    'absolute left-[60%] -top-[245px] flex pointer-events-none justify-end min-w-max z-10 px-6 pr-9 py-2 rounded-full bg-[#4CAF50] text-white opacity-0 transition-all duration-300 translate-x-2',
-                    {
-                        'opacity-100 translate-x-0 pointer-events-auto': freeActive,
-                        'opacity-0 translate-x-2 pointer-events-none': !isActive,
-                    }
-                )}>
-                <span>🎓 دوره رایگان | همین حالا شروع کنید!</span>
-            </a>
-            <a
                 href={`https://wa.me/message/3ECCGRVEYQWBL1`}
                 rel='noopener noreferrer'
                 target='_blank'
                 className={cn(
-                    'absolute left-[60%] -top-[200px] flex pointer-events-none justify-end min-w-max z-10 px-6 pr-9 py-2 rounded-full bg-[#25D366] text-black opacity-0 transition-all duration-300 translate-x-2',
+                    'absolute left-[60%] -top-[155px] flex pointer-events-none justify-end min-w-max z-10 px-6 pr-9 py-2 rounded-full bg-[#25D366] text-black opacity-0 transition-all duration-300 translate-x-2',
                     {
                         'opacity-100 translate-x-0 pointer-events-auto': telegramActive,
                         'opacity-0 translate-x-2 pointer-events-none': !isActive,
@@ -149,7 +107,7 @@ const FixedContactUs = () => {
                 rel='noopener noreferrer'
                 target='_blank'
                 className={cn(
-                    'absolute left-[60%] -top-[155px] flex pointer-events-none justify-end min-w-max z-10 px-6 pr-9 py-2 rounded-full bg-[#BDBDBD] text-white opacity-0 transition-all duration-300 translate-x-2',
+                    'absolute left-[60%] -top-[105px] flex pointer-events-none justify-end min-w-max z-10 px-6 pr-9 py-2 rounded-full bg-[#BDBDBD] text-white opacity-0 transition-all duration-300 translate-x-2',
                     {
                         'opacity-100 translate-x-0 pointer-events-auto': itaaActive,
                         'opacity-0 translate-x-2 pointer-events-none': !isActive,
@@ -157,23 +115,6 @@ const FixedContactUs = () => {
                 )}>
                 <span>💬 ایتا | 09330042028</span>
             </a>
-            <div
-                className={cn(
-                    'absolute left-[60%] -top-[105px] flex pointer-events-none justify-end min-w-max z-10 px-6 pr-9 py-2 rounded-full bg-[#FFEB3B] text-black opacity-0 transition-all duration-300 translate-x-2',
-                    {
-                        'opacity-100 translate-x-0 pointer-events-auto': msgActive,
-                        'opacity-0 translate-x-2 pointer-events-none': !isActive,
-                    }
-                )}>
-                <a
-                    href={`sms:09330042028;?&body=${'سلام%20آقای%20زارعی لطفاً%20می‌تونید%20در%20مورد%20دوره%20هاتون%20به%20من%20توضیح%20بدید؟'}`}
-                    className='flex items-center gap-1'
-                    rel='nofollow noopener'>
-                    <span>✉️ پیامک </span>
-                    <span>|</span>
-                    <span>09330042028</span>
-                </a>
-            </div>
             <a
                 href={`https://www.instagram.com/saberzarei.ir?igsh=NWY2azhjNnVxZ25y`}
                 rel='noopener noreferrer'

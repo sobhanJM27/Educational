@@ -5,9 +5,10 @@ import Close from './UI/Icons/Close';
 interface Props {
     children: React.ReactNode;
     zIndex: number;
+    parentStateControl?: boolean;
 }
 
-const Popup = ({ children, zIndex }: Props) => {
+const Popup = ({ children, zIndex, parentStateControl = true }: Props) => {
     const [isActive, setIsActive] = useState(false);
     const popupRef = useRef<HTMLDivElement>(null);
 
@@ -56,7 +57,7 @@ const Popup = ({ children, zIndex }: Props) => {
             className={cn(
                 `flex items-center justify-center p-4 rounded-xl bg-[#fff] transition-all duration-300 delay-100 shadow-main fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-0 pointer-events-none`,
                 {
-                    'opacity-100 scale-100 pointer-events-auto': isActive,
+                    'opacity-100 scale-100 pointer-events-auto': parentStateControl && isActive,
                 }
             )}>
             <Close

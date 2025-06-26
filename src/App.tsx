@@ -29,6 +29,7 @@ const BasketProducts = lazy(() => import('./Pages/Public/BasketProducts'));
 const BasketUserInfo = lazy(() => import('./Pages/Public/BasketUserInfo'));
 const BasketOrderDetails = lazy(() => import('./Pages/Public/BasketOrderDetails'));
 const FailedBuy = lazy(() => import('./Pages/Public/FailedBuy'));
+const Help = lazy(() => import('./Pages/Public/Help'));
 
 const Admin = lazy(() => import('./Pages/Admin/Admin'));
 const AdminSummary = lazy(() => import('./Pages/Admin/AdminSummary'));
@@ -175,6 +176,14 @@ function App() {
                                 element={
                                     <Suspense fallback={<Loader />}>
                                         <ContactUs />
+                                    </Suspense>
+                                }
+                            />
+                            <Route
+                                path='/Help'
+                                element={
+                                    <Suspense fallback={<Loader />}>
+                                        <Help />
                                     </Suspense>
                                 }
                             />

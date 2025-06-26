@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import LogoIcon from './UI/Icons/Logo';
 import SearchInput from './UI/SearchInput';
 import { Link } from 'react-router-dom';
@@ -16,10 +16,25 @@ import { useLocation } from 'react-router-dom';
 import { cn } from '../utils/lib/Cn';
 import { useAppSelector } from '../hooks/useReduxHooks';
 import useAuth from '../hooks/useAuth';
+import Popup from './Popup';
+import HeadTitle from './UI/HeadTitle';
+import MainInput from './UI/MainInput';
+import toast from 'react-hot-toast';
+import useInputValidator from '../hooks/useInputValidator';
+import { addContact } from '../api/contactUs/contactAPI';
+import { useEnglishNums, usePersianNums } from '../hooks/usePersianNums';
+import { RadioGroup, RadioGroupItem } from './UI/RadioGroup';
+import { ContactTimes } from '../Types/ContactTimeType';
 
 const Navbar = () => {
+    const [popUpState, setPopUpState] = useState<boolean>(true);
     const currentTabIndex = useCurrentUrlTab(tabs);
     const { activeTab, handleMouseEnter, handleMouseLeave } = useCurrentTab(currentTabIndex);
+
+    //Popup
+    const nameRef = useRef<HTMLInputElement>(null);
+    const phoneRef = useRef<HTMLInputElement>(null);
+    const timeRef = useRef<ContactTimes>('morning');
 
     const [sideBar, setSideBar] = useState<boolean>(false);
 
@@ -38,6 +53,43 @@ const Navbar = () => {
     } else if (pathname.includes('Login')) {
         hidden = true;
     }
+
+    const handleTimeChange = (val: ContactTimes) => {
+        timeRef.current = val;
+    };
+
+    const submitHandler = async () => {
+        const name = nameRef.current!.value;
+        const nameMsg = useInputValidator(name);
+        if (nameMsg) {
+            toast.error(nameMsg);
+            return;
+        }
+        const phone = useEnglishNums(phoneRef.current!.value);
+        const phoneMsg = useInputValidator(phone, 'phone');
+        if (phoneMsg) {
+            toast.error(phoneMsg);
+            return;
+        }
+        const time = timeRef.current;
+        const loader = toast.loading('در حال ثبت درخواست شما');
+        try {
+            await addContact({
+                name,
+                phone,
+                time,
+                subject: '',
+                text: '',
+            });
+            toast.success('درخواست شما با موفقیت ثبت شد');
+            setPopUpState(false);
+        } catch (error) {
+            console.log(error);
+            toast.error('خطا در برقرای ارتباط');
+        } finally {
+            toast.dismiss(loader);
+        }
+    };
 
     return (
         <>
@@ -116,23 +168,54 @@ const Navbar = () => {
                 </nav>
                 <Sidebar show={sideBar} func={() => setSideBar(prev => !prev)} />
             </header>
-            {/* {!pathname.includes('Free') && (
-                <Popup zIndex={100}>
-                    <div className='flex flex-col gap-8 items-center text-center max-w-[24.375rem] min-w-[20rem] tips2:min-w-[15rem]'>
-                        <HeadTitle fontSize='1.1rem'>تخفیف ویژه بلک فرایدی! فقط 24 ساعت!</HeadTitle>
-                        <p className='text-base'>
-                            فقط به مدت 24 ساعت، از ساعت 12 ظهر پنج‌شنبه تا 12 ظهر جمعه، می‌تونی با 50% تخفیف ویژه بلک فرایدی در دوره‌های
-                            عمومی ما ثبت‌نام کنی.
-                        </p>
-                        <p>
-                            ثبت نام فوری{' '}
-                            <a className='text-purple' href='tel:+09330042028'>
-                                09330042028
-                            </a>
-                        </p>
+            <Popup zIndex={100} parentStateControl={popUpState}>
+                <div className='flex flex-col gap-8 items-center text-center max-w-[24.375rem] min-w-[20rem] tips2:min-w-[15rem]'>
+                    <HeadTitle fontSize='1.1rem'>🚀 یک تصمیم هوشمندانه برای آینده شما!</HeadTitle>
+                    <p className='text-base'>💡 مشاوره رایگان + تخفیف ویژه برای انتخاب بهترین مسیر رشد و موفقیت</p>
+                    <p className='flex flex-col gap-1'>
+                        <span>🎯 مهارت‌های ضروری برای پیشرفت:</span>
+                        <span>✅ ارتباط مؤثر و فن بیان</span>
+                        <span>✅ اعتماد به نفس و رشد فردی</span>
+                        <span>✅ هوش مصنوعی و آینده شغلی</span>
+                    </p>
+                    <p>📌 همین حالا اطلاعات خود را وارد کنید تا از مشاوره رایگان بهره‌مند شوید!</p>
+                    <div className='flex flex-col gap-2 w-full'>
+                        <MainInput
+                            ref={nameRef}
+                            className='flex-1 w-full max-w-none'
+                            placeHolder='نام و نام خانوادگی'
+                            id='name'
+                            intent='login'
+                            inputSize='small'
+                        />
+                        <MainInput
+                            ref={phoneRef}
+                            className='flex-1 w-full max-w-none'
+                            placeHolder='شماره همراه'
+                            id='phone'
+                            intent='login'
+                            inputSize='small'
+                        />
+                        <div className='flex flex-col gap-2 items-center'>
+                            <h2>زمان پیشنهادی تماس با شما</h2>
+                            <RadioGroup
+                                defaultValue='morning'
+                                className='flex gap-3 books:flex-col'
+                                onValueChange={val => handleTimeChange(val as ContactTimes)}>
+                                <div className='flex items-center space-x-2'>
+                                    <RadioGroupItem value='morning' id='morning' key={'morning'} />
+                                    <label htmlFor='morning'>{usePersianNums('9-14')}</label>
+                                </div>
+                                <div className='flex items-center space-x-2'>
+                                    <RadioGroupItem value='evening' id='evening' key={'evening'} />
+                                    <label htmlFor='evening'>{usePersianNums('16-21')}</label>
+                                </div>
+                            </RadioGroup>
+                        </div>
                     </div>
-                </Popup>
-            )} */}
+                    <MainButton className='max-w-none' onClick={submitHandler} intent='purple' size='small' text='ثبت درخواست' />
+                </div>
+            </Popup>
         </>
     );
 };

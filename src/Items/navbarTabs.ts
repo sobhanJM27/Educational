@@ -13,11 +13,6 @@ export const tabs = [
         url: '/',
     },
     {
-        name: 'مقالات آموزشی',
-        id: uuidv4(),
-        url: '/Articles/Educational',
-    },
-    {
         name: 'دوره های آموزشی',
         id: uuidv4(),
         url: '/Courses',
@@ -57,6 +52,34 @@ export const tabs = [
                 url: 'Article/6728a100829a4a13af541fd9/%D8%AC%D8%B9%D8%A8%D9%87%E2%80%8C%D8%A7%D8%A8%D8%B2%D8%A7%D8%B1-%D8%B7%D9%84%D8%A7%DB%8C%DB%8C',
             },
         ],
+    },
+    {
+        name: 'خدمات های آموزشی',
+        id: uuidv4(),
+        url: '#',
+        isDropdown: true,
+        links: [
+            {
+                name: 'مجری‌گری صحنه',
+                id: uuidv4(),
+                url: '/Article/67fe88674d05739730ee22e1/%D9%85%D8%AC%D8%B1%DB%8C-%D8%B5%D8%AD%D9%86%D9%87-%D8%AF%D8%B1-%D8%B4%DB%8C%D8%B1%D8%A7%D8%B2',
+            },
+            {
+                name: 'سخنرانی انگیزشی',
+                id: uuidv4(),
+                url: '#',
+            },
+            {
+                name: 'مشاوره تخصصی رشد و بیان',
+                id: uuidv4(),
+                url: '/Help',
+            },
+        ],
+    },
+    {
+        name: 'مقالات آموزشی',
+        id: uuidv4(),
+        url: '/Articles/Educational',
     },
     {
         name: 'کتاب آموزشی',

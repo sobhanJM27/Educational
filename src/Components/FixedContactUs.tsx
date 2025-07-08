@@ -90,7 +90,7 @@ const FixedContactUs = () => {
                 </a>
             </div>
             <a
-                href={`https://wa.me/message/3ECCGRVEYQWBL1`}
+                href={`https://wa.me/message/U6DNQG63OTZ6N1`}
                 rel='noopener noreferrer'
                 target='_blank'
                 className={cn(
@@ -100,10 +100,10 @@ const FixedContactUs = () => {
                         'opacity-0 translate-x-2 pointer-events-none': !isActive,
                     }
                 )}>
-                <span>📱 واتساپ | 09330042028</span>
+                <span>📱 واتساپ | 09330053028</span>
             </a>
             <a
-                href={`https://eitaa.com/Saberzarei_support`}
+                href={`https://eitaa.com/Saberzarei_support2`}
                 rel='noopener noreferrer'
                 target='_blank'
                 className={cn(
@@ -113,7 +113,7 @@ const FixedContactUs = () => {
                         'opacity-0 translate-x-2 pointer-events-none': !isActive,
                     }
                 )}>
-                <span>💬 ایتا | 09330042028</span>
+                <span>💬 ایتا | 09330053028</span>
             </a>
             <a
                 href={`https://www.instagram.com/saberzarei.ir?igsh=NWY2azhjNnVxZ25y`}

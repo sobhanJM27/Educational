@@ -54,6 +54,11 @@ const Summary = () => {
     queryFn: () => getPurchasedInPerson({ token, ...auth }, 5),
   });
 
+  const STRESS_COURSE_ID = "686f6e0578b992a9aba3dda5";
+  const stressCourse = offlineQuery.data?.find(
+    (course) => course?._id === STRESS_COURSE_ID
+  );
+
   const onlineRows = useMemo(
     () =>
       onlineQuery.data?.map((item, idx) => {
@@ -302,12 +307,19 @@ const Summary = () => {
               />
               <SummaryBoxes
                 key={4}
+                title="دوره صوتی کنترل استرس"
+                value={stressCourse ? 7 : 0}
+                icon={<Class className="w-6 h-6" />}
+                {...(stressCourse && { link: "Stress" })}
+              />
+              <SummaryBoxes
+                key={5}
                 title="کتاب ها"
                 value={userQuery.data.lengthBook}
                 icon={<Book className="w-6 h-6" />}
               />
               <SummaryBoxes
-                key={5}
+                key={6}
                 title="دیدگاه های من"
                 value={userQuery.data.lengthcomment}
                 icon={<Comment className="w-6 h-6" />}

@@ -62,7 +62,7 @@ const CardsWithFilter = forwardRef<HTMLDivElement, Props>((props, ref) => {
   return (
     <section className="p-4 flex flex-col gap-8">
       {props.type === "course" && props.category ? null : (
-        <section>
+        <section className="flex gap-8">
           <Filter
             queryParameters={queryParameters}
             handleParamsChange={handleParamsChange}

@@ -307,8 +307,8 @@ const Summary = () => {
               />
               <SummaryBoxes
                 key={4}
-                title="دوره صوتی کنترل استرس"
-                value={stressCourse ? 7 : 0}
+                title="دوره کنترل استرس"
+                value={stressCourse ? 1 : 0}
                 icon={<Class className="w-6 h-6" />}
                 {...(stressCourse && { link: "Stress" })}
               />

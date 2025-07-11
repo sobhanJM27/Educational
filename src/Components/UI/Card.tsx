@@ -4,7 +4,7 @@ import BuyComp from "./BuyComp";
 import { Link } from "react-router-dom";
 import { cn } from "../../utils/lib/Cn";
 import OwnerProfile from "./OwnerProfile";
-import { Book, Course, Article, NafasAram } from "../../Types/apiTypes";
+import { Book, Course, Article } from "../../Types/apiTypes";
 import { usePersianNums } from "../../hooks/usePersianNums";
 import IconWrapper from "./IconWrapper";
 import BookIcon from "./Icons/Book";
@@ -30,11 +30,6 @@ type Props =
   | {
       type: "article";
       details: Article;
-      theme: "black" | "white";
-    }
-  | {
-      type: "nafasAram";
-      details: NafasAram;
       theme: "black" | "white";
     }
   | {

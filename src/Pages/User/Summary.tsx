@@ -310,7 +310,11 @@ const Summary = () => {
                 title="دوره کنترل استرس"
                 value={stressCourse ? 1 : 0}
                 icon={<Class className="w-6 h-6" />}
-                {...(stressCourse && { link: "Stress" })}
+                link={
+                  stressCourse
+                    ? "Stress"
+                    : "/Course/686f6e0578b992a9aba3dda5/%D8%AF%D9%88%D8%B1%D9%87-%D8%B5%D9%88%D8%AA%DB%8C-%DA%A9%D9%86%D8%AA%D8%B1%D9%84-%D8%A7%D8%B3%D8%AA%D8%B1%D8%B3"
+                }
               />
               <SummaryBoxes
                 key={5}

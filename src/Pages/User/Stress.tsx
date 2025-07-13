@@ -9,29 +9,30 @@ import { stressItems } from '../../Items/stressItems';
 import { getPurchasedOnline } from '../../api/getters/userAPI';
 import { useAuthHooks } from '../../hooks/useAuthHooks';
 import useAuth from '../../hooks/useAuth';
+import WithLoaderAndError from '../../Components/WithLoaderAndError';
 
 const Stress = () => {
     const navigate = useNavigate();
     const { token } = useAuth();
     const auth = useAuthHooks();
 
-    const onlineQuery = useQuery({
+    const { data, isLoading, isError, error, isSuccess } = useQuery({
         queryKey: ['onlineCourses', 'user'],
         queryFn: () => getPurchasedOnline({ token, ...auth }, 5),
     });
 
     const STRESS_COURSE_ID = '686f6e0578b992a9aba3dda5';
-    const stressCourse = onlineQuery.data?.find((course) => course?._id === STRESS_COURSE_ID);
+    const stressCourse = data?.find((course) => course?._id === STRESS_COURSE_ID);
 
     useEffect(() => {
-        if (!stressCourse) {
+        if (isSuccess && !stressCourse) {
             navigate(
                 '/Course/686f6e0578b992a9aba3dda5/%D8%AF%D9%88%D8%B1%D9%87-%D8%B5%D9%88%D8%AA%DB%8C-%DA%A9%D9%86%D8%AA%D8%B1%D9%84-%D8%A7%D8%B3%D8%AA%D8%B1%D8%B3'
             );
         }
-    }, [navigate, stressCourse]);
+    }, [isSuccess, stressCourse, navigate]);
     return (
-        <>
+        <WithLoaderAndError {...{ data, isLoading, error, isError }}>
             <section className='flex flex-col gap-6'>
                 <StressHeader />
                 <div className='flex flex-col gap-4'>
@@ -73,7 +74,7 @@ const Stress = () => {
                 </div>
                 <StressPractices />
             </section>
-        </>
+        </WithLoaderAndError>
     );
 };
 

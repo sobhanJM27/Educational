@@ -43,6 +43,11 @@ export const userNavItems = [
     id: uuidv4(),
   },
   {
+    name: "دوره کنترل استرس",
+    link: "Stress",
+    id: uuidv4(),
+  },
+  {
     name: "خروج",
     link: "Logout",
     id: uuidv4(),

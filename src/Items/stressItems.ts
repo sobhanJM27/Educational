@@ -16,7 +16,7 @@ export const stressItems = [
       practice4:
         "شب، بررسی کن که تونستی چرخه رو قطع کنی یا نه؟ و حس بدنت بعدش چی بود؟",
     },
-    image: "../../public/images/stress-day1.png",
+    image: "/images/stress-day1.png",
   },
   {
     id: uuidv4(),
@@ -33,7 +33,7 @@ export const stressItems = [
       practice4:
         "📜 لیست جملات امن پیشنهادی:\n • «این فقط یک موقعیته، نه تهدید واقعی»\n • «من دارم یاد می‌گیرم، نه اجرا می‌کنم»\n • «ترس علامته، نه حکم شکست»",
     },
-    image: "../../public/images/stress-day2.png",
+    image: "/images/stress-day2.png",
   },
   {
     id: uuidv4(),
@@ -49,7 +49,7 @@ export const stressItems = [
       practice4:
         "و اگر شد، یک بار در موقعیت اجتماعی واقعی این تمرین رو تست کن (حتی فقط یک دور)",
     },
-    image: "../../public/images/stress-day3.png",
+    image: "/images/stress-day3.png",
   },
   {
     id: uuidv4(),
@@ -64,7 +64,7 @@ export const stressItems = [
         "بعدش یه فلش بکش و بنویس: محرک اصلی چی بود؟ مثل: «جلسه کاری، مدیرم حضور داشت، وقتی گفت نظرت چیه؟»",
       practice4: "",
     },
-    image: "../../public/images/stress-day4.png",
+    image: "/images/stress-day4.png",
   },
   {
     id: uuidv4(),

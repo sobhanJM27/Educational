@@ -26,6 +26,7 @@ const Book = () => {
   const { Auth } = useAuth();
   const { products } = useAppSelector((state) => state.basket);
   const dispatch = useAppDispatch();
+  const addToBasket = useAddToBasket()
 
   const { id } = useParams();
 
@@ -103,7 +104,7 @@ const Book = () => {
   }, []);
 
   const buyHandler = useCallback(() => {
-    useAddToBasket(Auth, dispatch, data!, "book");
+    addToBasket(Auth, dispatch, data!, "book");
   }, [data]);
   return (
     <WithLoaderAndError {...{ data, isLoading, isError, error }}>

@@ -39,6 +39,7 @@ type Props =
     };
 
 const Card = ({ details, type, theme }: Props) => {
+  const addToBasket = useAddToBasket();
   const isBlack = theme === "black";
   if (type === "course") {
     const url = `/Course/${details._id}/${encodeURIComponent(
@@ -48,8 +49,8 @@ const Card = ({ details, type, theme }: Props) => {
     const dispatch = useAppDispatch();
     const { products } = useAppSelector((state) => state.basket);
     const buyHandler = useCallback(() => {
-      useAddToBasket(Auth, dispatch, details, "course");
-    }, [details]);
+      addToBasket(Auth, dispatch, details, "course");
+    }, [Auth, addToBasket, details, dispatch]);
     return (
       <div
         className={cn(

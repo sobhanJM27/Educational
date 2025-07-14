@@ -31,6 +31,7 @@ const Course = () => {
     const { Auth } = useAuth();
     const { products } = useAppSelector(state => state.basket);
     const dispatch = useAppDispatch();
+    const addToBasket = useAddToBasket();
 
     const { id } = useParams();
 
@@ -120,8 +121,8 @@ const Course = () => {
     }, []);
 
     const buyHandler = useCallback(() => {
-        useAddToBasket(Auth, dispatch, data!, 'book');
-    }, [data]);
+        addToBasket(Auth, dispatch, data!, 'book');
+    }, [Auth, addToBasket, data, dispatch]);
 
     return (
         <WithLoaderAndError {...{ data, isLoading, isError, error }}>

@@ -18,6 +18,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment-jalaali';
 import ElipsisContentWithTT from '../../Components/UI/ElipsisContentWithTT';
 import { OrderUrlCreator } from '../../utils/OrderUrlCreator';
+import { STRESS_COURSE_HERF, STRESS_COURSE_ID } from '../../Items/stressItems';
 
 const Summary = () => {
     const { token } = useAuth();
@@ -43,7 +44,6 @@ const Summary = () => {
         queryFn: () => getPurchasedInPerson({ token, ...auth }, 5),
     });
 
-    const STRESS_COURSE_ID = '6877b84ef2f64b46cf8c70ea';
     const stressCourse = onlineQuery.data?.find((course) => course?._id === STRESS_COURSE_ID);
 
     const onlineRows = useMemo(
@@ -251,11 +251,7 @@ const Summary = () => {
                                 title='دوره کنترل استرس'
                                 value={stressCourse ? 1 : 0}
                                 icon={<Class className='w-6 h-6' />}
-                                link={
-                                    stressCourse
-                                        ? 'Stress'
-                                        : '/Course/6877b84ef2f64b46cf8c70ea/%D8%AF%D9%88%D8%B1%D9%87-%D8%B5%D9%88%D8%AA%DB%8C-%DA%A9%D9%86%D8%AA%D8%B1%D9%84-%D8%A7%D8%B3%D8%AA%D8%B1%D8%B3'
-                                }
+                                link={stressCourse ? 'Stress' : STRESS_COURSE_HERF}
                             />
                             <SummaryBoxes key={5} title='کتاب ها' value={userQuery.data.lengthBook} icon={<Book className='w-6 h-6' />} />
                             <SummaryBoxes

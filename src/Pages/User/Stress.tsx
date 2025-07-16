@@ -21,13 +21,13 @@ const Stress = () => {
         queryFn: () => getPurchasedOnline({ token, ...auth }, 5),
     });
 
-    const STRESS_COURSE_ID = '686f6e0578b992a9aba3dda5';
+    const STRESS_COURSE_ID = '6877b84ef2f64b46cf8c70ea';
     const stressCourse = data?.find((course) => course?._id === STRESS_COURSE_ID);
 
     useEffect(() => {
         if (isSuccess && !stressCourse) {
             navigate(
-                '/Course/686f6e0578b992a9aba3dda5/%D8%AF%D9%88%D8%B1%D9%87-%D8%B5%D9%88%D8%AA%DB%8C-%DA%A9%D9%86%D8%AA%D8%B1%D9%84-%D8%A7%D8%B3%D8%AA%D8%B1%D8%B3'
+                '/Course/6877b84ef2f64b46cf8c70ea/%D8%AF%D9%88%D8%B1%D9%87-%D8%B5%D9%88%D8%AA%DB%8C-%DA%A9%D9%86%D8%AA%D8%B1%D9%84-%D8%A7%D8%B3%D8%AA%D8%B1%D8%B3'
             );
         }
     }, [isSuccess, stressCourse, navigate]);

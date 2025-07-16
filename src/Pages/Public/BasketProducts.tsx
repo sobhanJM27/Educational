@@ -62,7 +62,7 @@ const BasketProducts = () => {
                 id: uuidv4(),
             },
             {
-                key: 'مبلغ کل با اعمال نخفیف',
+                key: 'مبلغ کل با اعمال تخفیف',
                 value: usePersianNums(finalPrice === 0 ? totlaPrice : finalPrice, true),
                 id: uuidv4(),
             },

@@ -86,12 +86,8 @@ const BasketProducts = () => {
             if (res) {
                 const discounted = (Number(totalPriceRef.current) * res.percent) / 100;
                 setDiscountedPrice(discounted);
-                let val = Number(totalPriceRef.current) - discounted;
-                if (val > 10000) {
-                    setFinalPrice(val);
-                } else {
-                    setFinalPrice(10000);
-                }
+                const newPrice = Number(totalPriceRef.current) - discounted;
+                setFinalPrice(newPrice < 0 ? 0 : newPrice);
                 toast.success('کد با موفقیت اعمال شد');
             } else {
                 toast.error('کد معتبر نمیباشد');

@@ -63,7 +63,7 @@ const BasketProducts = () => {
             },
             {
                 key: 'مبلغ کل با اعمال تخفیف',
-                value: usePersianNums(finalPrice === 0 ? totlaPrice : finalPrice, true),
+                value: usePersianNums(discountedPrice === 0 ? totlaPrice : finalPrice, true),
                 id: uuidv4(),
             },
         ];
@@ -87,7 +87,7 @@ const BasketProducts = () => {
                 const discounted = (Number(totalPriceRef.current) * res.percent) / 100;
                 setDiscountedPrice(discounted);
                 const newPrice = Number(totalPriceRef.current) - discounted;
-                setFinalPrice(newPrice < 0 ? 0 : newPrice);
+                setFinalPrice(newPrice <= 0 ? 0 : newPrice);
                 toast.success('کد با موفقیت اعمال شد');
             } else {
                 toast.error('کد معتبر نمیباشد');
@@ -160,7 +160,7 @@ const BasketProducts = () => {
                         state={[
                             products,
                             details[1].value,
-                            finalPrice === 0 ? totalPriceRef.current : finalPrice,
+                            discountedPrice === 0 ? totalPriceRef.current : finalPrice,
                             hasBookeRef.current,
                             discountRef.current?.value,
                         ]}>

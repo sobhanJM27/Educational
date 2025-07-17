@@ -200,7 +200,6 @@ const BasketUserInfo = () => {
                 price = Number(tempPrice);
             }
             setPostPrice(price);
-            // console.log(price);
         } catch (error) {
             console.log(error);
             toast.loading('خطا در برقراری ارتباط');

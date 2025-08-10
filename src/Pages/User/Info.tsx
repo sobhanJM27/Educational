@@ -188,7 +188,7 @@ const Info = () => {
               className="flex-1"
               defaultValue={data?.fixPhone}
             />
-            <MainInput
+            {/* <MainInput
               label="کد پستی"
               id="postal-code"
               intent="login"
@@ -197,7 +197,7 @@ const Info = () => {
               key={"postal-code"}
               className="flex-1"
               defaultValue={data?.codePostal}
-            />
+            /> */}
           </div>
           <MainTextArea
             intent="primary"

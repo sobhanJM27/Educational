@@ -170,35 +170,19 @@ const Course = () => {
                 </div>
               </div>
             </ParallaxHeader>
-            <div className='hidden hero:block'>
-              <CourseInfo
-                markdown={data.text}
-                details={details}
-                teacher={teacher}
-                infoHeader={`درباره ${data.title}`}
-                ref={infoRef}
-                type='course'
-                isInBasket={
-                  products.find((item) => item._id === data._id) ? true : false
-                }
-                buyHandler={buyHandler}
-              />
-            </div>
             <CourseNav type='course' siwtchHandler={handleSwitch} />
-            <div className='block hero:hidden'>
-              <CourseInfo
-                markdown={data.text}
-                details={details}
-                teacher={teacher}
-                infoHeader={`درباره ${data.title}`}
-                ref={infoRef}
-                type='course'
-                isInBasket={
-                  products.find((item) => item._id === data._id) ? true : false
-                }
-                buyHandler={buyHandler}
-              />
-            </div>
+            <CourseInfo
+              markdown={data.text}
+              details={details}
+              teacher={teacher}
+              infoHeader={`درباره ${data.title}`}
+              ref={infoRef}
+              type='course'
+              isInBasket={
+                products.find((item) => item._id === data._id) ? true : false
+              }
+              buyHandler={buyHandler}
+            />
             {/* <VideoPlayer videoUrl="https://www.aparat.com/video/video/embed/videohash/BWOCi/vt/frame?titleShow=true&autoplay=true" /> */}
             <DropDowns
               title='سوالات متداول'

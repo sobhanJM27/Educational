@@ -132,7 +132,7 @@ const Orders = () => {
                                     </Tooltip>
                                 </TooltipProvider>
                             </TableCell>
-                            <TableCell className='text-center' key='6'>
+                            {/* <TableCell className='text-center' key='6'>
                                 <Link to={`/Course/${item?._id}/${encodeURIComponent(item?.title)}`}>
                                     <MainButton
                                         className='bg-black hover:bg-purple max-w-fit'
@@ -141,7 +141,7 @@ const Orders = () => {
                                         size='medium'
                                     />
                                 </Link>
-                            </TableCell>
+                            </TableCell> */}
                         </TableRow>
                     );
                 }),

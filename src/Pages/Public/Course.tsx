@@ -21,6 +21,8 @@ import { useAppSelector, useAppDispatch } from '../../hooks/useReduxHooks';
 import useAddToBasket from '../../hooks/useAddToBasket';
 import useAuth from '../../hooks/useAuth';
 import BuyText from '../../Components/UI/BuyText';
+import { STRESS_COURSE_ID } from '../../Items/stressItems';
+import { OFFLINE_COURSE_ID } from '../../Items/offlineCourseItems';
 
 const Course = () => {
   const infoRef = useRef<HTMLDivElement>(null);
@@ -57,60 +59,70 @@ const Course = () => {
   };
 
   const details = useMemo(() => {
-    if (data) {
-      let episodes = 0;
-      let totalHours = 0;
-      let totalMinutes = 0;
-      data.chapters.forEach((chapter) => {
-        episodes += chapter.episodes.length;
-        totalHours += Number(chapter.time.hour);
-        totalMinutes += Number(chapter.time.min);
-      });
-      if (totalMinutes >= 60) {
-        totalHours += Math.floor(totalMinutes / 60);
-        totalMinutes %= 60;
-      }
-      return [
-        {
-          key: 'قیمت',
-          // value: usePersianNums(data.finalPrice, true),
-          value: '',
-          id: uuidv4(),
-        },
-        {
-          key: 'قبل از خرید، مشاوره رایگان دریافت کنید',
-          value: usePersianNums('09330042028'),
-          id: uuidv4(),
-        },
-        {
-          key: 'سطح',
-          value: data.level,
-          id: uuidv4(),
-        },
-        {
-          key: 'تعداد فصول',
-          value: usePersianNums(data.chapters.length),
-          id: uuidv4(),
-        },
-        {
-          key: 'تعداد جلسات',
-          value: usePersianNums(episodes),
-          id: uuidv4(),
-        },
-        {
-          key: 'مدت زمان دوره',
-          value: usePersianNums(`${totalHours} ساعت و ${totalMinutes} دقیقه`),
-          id: uuidv4(),
-        },
-        {
-          key: 'تعداد بازدید',
-          value: usePersianNums(449 + Number(data.numberLink), true),
-          id: uuidv4(),
-        },
-      ];
-    } else {
-      return [];
+    if (!data) return [];
+
+    const showPrice =
+      data._id === STRESS_COURSE_ID || data._id === OFFLINE_COURSE_ID;
+
+    let episodes = 0;
+    let totalHours = 0;
+    let totalMinutes = 0;
+
+    data.chapters.forEach((chapter) => {
+      episodes += chapter.episodes.length;
+      totalHours += Number(chapter.time.hour);
+      totalMinutes += Number(chapter.time.min);
+    });
+
+    if (totalMinutes >= 60) {
+      totalHours += Math.floor(totalMinutes / 60);
+      totalMinutes %= 60;
     }
+
+    const detailItems: { key: string; value: string; id: string }[] = [];
+
+    if (showPrice) {
+      detailItems.push({
+        key: 'قیمت',
+        value: usePersianNums(data.price, true) + ' تومان',
+        id: uuidv4(),
+      });
+      detailItems.push({
+        key: 'قیمت با تخفیف',
+        value: usePersianNums(data.finalPrice, true) + ' تومان',
+        id: uuidv4(),
+      });
+    }
+
+    detailItems.push(
+      {
+        key: 'سطح',
+        value: data.level,
+        id: uuidv4(),
+      },
+      {
+        key: 'تعداد فصول',
+        value: usePersianNums(data.chapters.length),
+        id: uuidv4(),
+      },
+      {
+        key: 'تعداد جلسات',
+        value: usePersianNums(episodes),
+        id: uuidv4(),
+      },
+      {
+        key: 'مدت زمان دوره',
+        value: usePersianNums(`${totalHours} ساعت و ${totalMinutes} دقیقه`),
+        id: uuidv4(),
+      },
+      {
+        key: 'تعداد بازدید',
+        value: usePersianNums(449 + Number(data.numberLink), true),
+        id: uuidv4(),
+      }
+    );
+
+    return detailItems;
   }, [data]);
 
   const teacher = useMemo(() => {

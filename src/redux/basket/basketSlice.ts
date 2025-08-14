@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { Book, Course } from "../../Types/apiTypes";
-import { useLocalStorage } from "../../hooks/useStorage";
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { Book, Course } from '../../Types/apiTypes';
+import { useLocalStorage } from '../../hooks/useStorage';
 
 // Define a type for the slice state
 interface UserState {
@@ -12,11 +12,11 @@ interface UserState {
 
 type AddPayload =
   | {
-      type: "course";
+      type: 'course';
       data: Course;
     }
   | {
-      type: "book";
+      type: 'book';
       data: Book;
     };
 type UpdatePayload = UserState;
@@ -34,15 +34,15 @@ const initialState: UserState = {
 };
 
 export const basketSlice = createSlice({
-  name: "cart",
+  name: 'cart',
   initialState,
   reducers: {
     addToBasket: (state, action: PayloadAction<AddPayload>) => {
       state.products.push(action.payload.data);
       state.qty += 1;
-      const [_, setValue] = useLocalStorage("products", []);
+      const [_, setValue] = useLocalStorage('products', []);
 
-      if (action.payload.type === "book") {
+      if (action.payload.type === 'book') {
         state.total += Number(action.payload.data.finalPricePhysical);
       } else {
         state.total += Number(action.payload.data.finalPrice);
@@ -65,7 +65,7 @@ export const basketSlice = createSlice({
       );
       state.qty -= 1;
       state.total -= Number(action.payload.price);
-      const [_, setValue] = useLocalStorage("products", []);
+      const [_, setValue] = useLocalStorage('products', []);
       setValue(state.products);
     },
     updateProduct: (state, action: PayloadAction<UpdatePayload>) => {

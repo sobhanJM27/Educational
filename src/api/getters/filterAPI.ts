@@ -11,6 +11,7 @@ export type FilterData = {
 };
 
 const curseCategoryValues = {
+  Special: "getCourseSpecial",
   Fanbayan: "getCourseFanbayan",
   PersonalDevelopment: "getCoursePersonalDevelopment",
 };

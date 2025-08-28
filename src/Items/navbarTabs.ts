@@ -19,19 +19,19 @@ export const tabs = [
         isDropdown: true,
         links: [
             {
-                name: 'آموزش تخصصی فن بیان برای تمام سنین',
+                name: 'بسته های ویژه',
+                id: uuidv4(),
+                url: '/Courses/Special'
+            },
+            {
+                name: 'دوره های فن بیان و سخنوری',
                 id: uuidv4(),
                 url: '/Courses/Fanbayan',
             },
             {
-                name: 'آموزش مهارت های رشد و توسعه ی فردی',
+                name: 'رشد و توسعه فردی',
                 id: uuidv4(),
                 url: '/Courses/PersonalDevelopment',
-            },
-            {
-                name: 'دوره رایگان',
-                id: uuidv4(),
-                url: '/Article/66982119b81fb6d998b0308d/%D9%85%DB%8C%D9%86%DB%8C-%D8%AF%D9%88%D8%B1%D9%87',
             },
         ],
     },

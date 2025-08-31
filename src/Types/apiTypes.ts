@@ -64,6 +64,7 @@ export type Course = {
   urlTitle: string;
   urlGoogle: string;
   sortByNumber: number;
+  subCourse: string[];
 } & SingleSchema;
 
 export type Book = {

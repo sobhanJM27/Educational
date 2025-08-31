@@ -19,6 +19,7 @@ export const editCourse = async (
     | "level"
     | "type"
     | "spotPlayerID"
+    | "subCourse"
     | "urlTitle"
     | "urlGoogle"
   >
@@ -51,6 +52,7 @@ export const addCourse = async (
     | "level"
     | "type"
     | "spotPlayerID"
+    | "subCourse"
     | "urlTitle"
     | "urlGoogle"
   >

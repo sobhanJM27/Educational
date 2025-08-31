@@ -1,2 +1,0 @@
-export const SILVER_COURSE = '68ad7e0f512e43898e43e648';
-export const FANBAYAN_COURSE = '655e0ac241d545099b48b29b';

@@ -112,6 +112,7 @@ const Add = () => {
     const typeRef = useRef<HTMLSelectElement | null>(null);
     const levelRef = useRef<HTMLSelectElement | null>(null);
     const spotRef = useRef<HTMLInputElement | null>(null);
+    const subCourseRef = useRef<HTMLInputElement | null>(null)
     const addCourseMutation = useMutation({
       mutationFn: () =>
         addCourse(
@@ -129,6 +130,7 @@ const Add = () => {
             price: priceRef.current!.value,
             type: typeRef.current!.value as "online" | "offline",
             spotPlayerID: spotRef.current!.value,
+            subCourse: subCourseRef.current!.value.split(','),
           }
         ),
       onSuccess: () => {
@@ -184,6 +186,7 @@ const Add = () => {
           <option value="پیشرفته">پیشرفته</option>
         </select>
         <input type="text" placeholder="ایدی اسپات پلیر" ref={spotRef} />
+        <input type="text" placeholder="ایدی های ساب کورس" ref={subCourseRef} />
         <button
           className="bg-pink max-w-fit"
           disabled={addCourseMutation.isPending}

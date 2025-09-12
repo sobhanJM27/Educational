@@ -135,6 +135,7 @@ const Edit = () => {
     const levelRef = useRef<HTMLSelectElement | null>(null);
     const spotRef = useRef<HTMLInputElement | null>(null);
     const subCourseRef = useRef<HTMLInputElement | null>(null);
+    const scoreRef = useRef<HTMLInputElement | null>(null);
     const details = location.state as Course;
 
     const editCourseMutation = useMutation({
@@ -153,6 +154,7 @@ const Edit = () => {
           type: typeRef.current!.value as "online" | "offline",
           spotPlayerID: spotRef.current!.value,
           subCourse: subCourseRef.current!.value.split(','),
+          score: Number(scoreRef.current!.value), 
         }),
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ["courses", "admin"] });
@@ -255,6 +257,12 @@ const Edit = () => {
           placeholder="ایدی های ساب کورس"
           ref={subCourseRef}
           defaultValue={details.subCourse}
+        />
+        <input 
+          type="number" 
+          placeholder="امتیاز"
+          ref={scoreRef}
+          defaultValue={details.score} 
         />
         <button
           className="bg-pink max-w-fit"

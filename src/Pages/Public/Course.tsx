@@ -21,8 +21,6 @@ import { useAppSelector, useAppDispatch } from '../../hooks/useReduxHooks';
 import useAddToBasket from '../../hooks/useAddToBasket';
 import useAuth from '../../hooks/useAuth';
 import BuyText from '../../Components/UI/BuyText';
-import { STRESS_COURSE_ID } from '../../Items/stressItems';
-import { OFFLINE_COURSE_ID } from '../../Items/offlineCourseItems';
 
 const Course = () => {
   const infoRef = useRef<HTMLDivElement>(null);
@@ -61,9 +59,6 @@ const Course = () => {
   const details = useMemo(() => {
     if (!data) return [];
 
-    const showPrice =
-      data._id === STRESS_COURSE_ID || data._id === OFFLINE_COURSE_ID;
-
     let episodes = 0;
     let totalHours = 0;
     let totalMinutes = 0;
@@ -80,19 +75,6 @@ const Course = () => {
     }
 
     const detailItems: { key: string; value: string; id: string }[] = [];
-
-    if (showPrice) {
-      detailItems.push({
-        key: 'قیمت',
-        value: usePersianNums(data.price, true) + ' تومان',
-        id: uuidv4(),
-      });
-      detailItems.push({
-        key: 'قیمت با تخفیف',
-        value: usePersianNums(data.finalPrice, true) + ' تومان',
-        id: uuidv4(),
-      });
-    }
 
     detailItems.push(
       {
@@ -119,7 +101,17 @@ const Course = () => {
         key: 'تعداد بازدید',
         value: usePersianNums(449 + Number(data.numberLink), true),
         id: uuidv4(),
-      }
+      },
+      {
+        key: 'قیمت',
+        value: usePersianNums(data.price, true) + ' تومان',
+        id: uuidv4(),
+      },
+      {
+        key: 'قیمت با تخفیف',
+        value: usePersianNums(data.finalPrice, true) + ' تومان',
+        id: uuidv4(),
+      },
     );
 
     return detailItems;

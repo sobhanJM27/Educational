@@ -65,6 +65,7 @@ export type Course = {
   urlGoogle: string;
   sortByNumber: number;
   subCourse: string[];
+  score: number;
 } & SingleSchema;
 
 export type Book = {

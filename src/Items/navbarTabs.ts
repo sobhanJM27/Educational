@@ -51,6 +51,29 @@ export const tabs = [
                 id: uuidv4(),
                 url: 'Article/6728a100829a4a13af541fd9/%D8%AC%D8%B9%D8%A8%D9%87%E2%80%8C%D8%A7%D8%A8%D8%B2%D8%A7%D8%B1-%D8%B7%D9%84%D8%A7%DB%8C%DB%8C',
             },
+            {
+                name: 'ویدیو سخنرانی و آموزشی',
+                id: uuidv4(),
+                url: 'https://saberzarei.com/Article/68babf3119b0414ff4387e73/%D8%B3%D8%AE%D9%86%D8%B1%D8%A7%D9%86%DB%8C-%D9%88-%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C',
+            }
+        ],
+    },
+    {
+        name: 'رضایت هنرجویان',
+        id: uuidv4(),
+        url: '/',
+        isDropdown: true,
+        links: [
+            {
+                name: 'رضایت بزرگسال',
+                id: uuidv4(),
+                url: 'Article/68babe7019b0414ff4387da9/%D8%B1%D8%B6%D8%A7%DB%8C%D8%AA-%D8%A8%D8%B2%D8%B1%DA%AF%D8%B3%D8%A7%D9%84',
+            },
+            {
+                name: 'رضایت کودک',
+                id: uuidv4(),
+                url: 'Article/68babed619b0414ff4387e0e/%D8%B1%D8%B6%D8%A7%DB%8C%D8%AA-%DA%A9%D9%88%D8%AF%DA%A9',
+            },
         ],
     },
     {

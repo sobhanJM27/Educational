@@ -19,9 +19,10 @@ export const editCourse = async (
     | "level"
     | "type"
     | "spotPlayerID"
-    | "subCourse"
     | "urlTitle"
     | "urlGoogle"
+    | "subCourse"
+    | "score"
   >
 ) => {
   const privateAxios = createPrivateAxios(auth);
@@ -52,9 +53,10 @@ export const addCourse = async (
     | "level"
     | "type"
     | "spotPlayerID"
-    | "subCourse"
     | "urlTitle"
     | "urlGoogle"
+    | "subCourse"
+    | "score"
   >
 ) => {
   const privateAxios = createPrivateAxios(auth);

@@ -9,7 +9,7 @@ const Bio = () => {
                     <ImageBox id='imagebox-svg' className='absolute inset-0' />
                     <img
                         className='w-full h-full rounded-full p-3 pr-5 pt-5 z-10 relative object-cover'
-                        src='/images/saber.jpg'
+                        src='/images/saberzarei.jpg'
                         alt='profile'
                     />
                 </div>

@@ -1,4 +1,3 @@
-import ImageSlideShow from "./ImageSlideShow";
 import Underline from "./UI/images/Underline";
 import MainButton from "./UI/MainButton";
 import { Link } from "react-router-dom";
@@ -52,8 +51,17 @@ const Hero = () => {
         </div>
         <Underline className="" id="underline-svg" />
       </div>
+      <div className="flex-1 flex items-center justify-center">
+        <video
+          controls
+          className="rounded-xl shadow-main w-full object-cover"
+        >
+          <source src="/videos/saber.mp4" type="video/mp4" />
+          مرورگر شما از ویدیو پشتیبانی نمی‌کند.
+        </video>
+      </div>
       {/* <HeroImage className="flex-1 w-full h-full" id="hero-image" /> */}
-      <ImageSlideShow />
+      {/* <ImageSlideShow /> */}
     </section>
   );
 };

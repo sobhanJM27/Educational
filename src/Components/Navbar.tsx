@@ -32,7 +32,6 @@ const Navbar = () => {
   const { activeTab, handleMouseEnter, handleMouseLeave } =
     useCurrentTab(currentTabIndex);
 
-  //Popup
   const nameRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
   const timeRef = useRef<ContactTimes>('morning');

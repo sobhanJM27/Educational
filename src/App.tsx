@@ -56,7 +56,6 @@ const ManageSlides = lazy(() => import('./Pages/Admin/ManageSlides'));
 const Sales = lazy(() => import('./Pages/Admin/Sales'));
 const ManageLanding = lazy(() => import('./Pages/Admin/ManageLanding'));
 const Sitemap = lazy(() => import('./Pages/Admin/Sitemap'));
-const ManageRedirects = lazy(() => import('./Pages/Admin/ManageRedirects'));
 
 const User = lazy(() => import('./Pages/User/User'));
 const Summary = lazy(() => import('./Pages/User/Summary'));
@@ -412,14 +411,6 @@ function App() {
                   element={
                     <Suspense fallback={<Loader />}>
                       <Sitemap />
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path="Manage-Redirects"
-                  element={
-                    <Suspense fallback={<Loader />}>
-                      <ManageRedirects />
                     </Suspense>
                   }
                 />

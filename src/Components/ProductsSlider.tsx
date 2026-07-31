@@ -4,7 +4,7 @@ import Card from './UI/Card';
 import { memo, forwardRef } from 'react';
 import MainButton from './UI/MainButton';
 import MainHeader from './UI/MainHeader';
-import { Book, Course } from '../Types/apiTypes';
+import { Book, Course, Article } from '../Types/apiTypes';
 import { CardTypes } from '../Types/cardTypes';
 import { useQuery } from '@tanstack/react-query';
 import { getCourses } from '../api/getters/courseAPI';
@@ -12,7 +12,6 @@ import { getEducationalArticles } from '../api/getters/articleAPI';
 import { getBooks } from '../api/getters/bookAPI';
 import WithLoaderAndError from './WithLoaderAndError';
 import { Link } from 'react-router-dom';
-import Cards from './Cards';
 
 type Props = {
   header: string;
@@ -45,6 +44,7 @@ const responsive = {
     slidesToSlide: 1,
   },
 };
+
 const bookResponsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -68,6 +68,24 @@ const bookResponsive = {
   },
   miniMobile: {
     breakpoint: { max: 360, min: 0 },
+    items: 1,
+    slidesToSlide: 1,
+  },
+};
+
+const articleResponsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1160 },
+    items: 2,
+    slidesToSlide: 2,
+  },
+  tablet: {
+    breakpoint: { max: 1160, min: 560 },
+    items: 2,
+    slidesToSlide: 2,
+  },
+  mobile: {
+    breakpoint: { max: 560, min: 0 },
     items: 1,
     slidesToSlide: 1,
   },
@@ -123,65 +141,77 @@ const ProductsSlider = forwardRef<HTMLDivElement, Props>(
               {header}
             </span>
           )}
-          {type === 'article' ? (
-            <>
-              <Cards array={data} type="article" />
-            </>
-          ) : (
-            <>
-              <div className="relative pb-10">
-                <Carousel
-                  className="p-2"
-                  additionalTransfrom={0}
-                  arrows
-                  autoPlaySpeed={3000}
-                  centerMode={false}
-                  dotListClass=""
-                  draggable
-                  focusOnSelect={false}
-                  infinite
-                  keyBoardControl
-                  minimumTouchDrag={80}
-                  pauseOnHover
-                  renderArrowsWhenDisabled={false}
-                  renderButtonGroupOutside={false}
-                  renderDotsOutside
-                  responsive={type === 'book' ? bookResponsive : responsive}
-                  rewind={false}
-                  rewindWithAnimation={false}
-                  rtl={true}
-                  shouldResetAutoplay
-                  showDots
-                  slidesToSlide={1}
-                  swipeable
-                >
-                  {type === 'course'
-                    ? (data as Course[])
-                        ?.sort((a, b) => a.sortByNumber - b.sortByNumber)
-                        .map((item: Course, idx: number) => {
-                          return (
-                            <Card
-                              theme={theme}
-                              key={idx}
-                              type={type}
-                              details={item as Course}
-                            />
-                          );
-                        })
-                    : data?.map((item: Book, idx: number) => {
+          <div className="relative pb-10">
+            <Carousel
+              className="p-2"
+              additionalTransfrom={0}
+              arrows
+              autoPlaySpeed={3000}
+              centerMode={false}
+              dotListClass=""
+              draggable
+              focusOnSelect={false}
+              infinite
+              itemClass="px-2"
+              keyBoardControl
+              minimumTouchDrag={80}
+              pauseOnHover
+              renderArrowsWhenDisabled={false}
+              renderButtonGroupOutside={false}
+              renderDotsOutside
+              responsive={
+                type === 'book'
+                  ? bookResponsive
+                  : type === 'article'
+                    ? articleResponsive
+                    : responsive
+              }
+              rewind={false}
+              rewindWithAnimation={false}
+              rtl={true}
+              shouldResetAutoplay
+              showDots
+              slidesToSlide={1}
+              swipeable
+            >
+              {type === 'course'
+                ? (data as Course[])
+                    ?.sort((a, b) => a.sortByNumber - b.sortByNumber)
+                    .map((item: Course, idx: number) => {
+                      return (
+                        <Card
+                          theme={theme}
+                          key={idx}
+                          type={type}
+                          details={item as Course}
+                        />
+                      );
+                    })
+                : type === 'article'
+                  ? (data as Article[])
+                      ?.sort((a, b) => a.sortByNumber - b.sortByNumber)
+                      .map((item: Article, idx: number) => {
                         return (
                           <Card
                             theme={theme}
                             key={idx}
                             type={type}
-                            details={item as Book}
+                            details={item as Article}
                           />
                         );
-                      })}
-                </Carousel>
-              </div>
-            </>
-          )}
+                      })
+                  : data?.map((item: Book, idx: number) => {
+                      return (
+                        <Card
+                          theme={theme}
+                          key={idx}
+                          type={type}
+                          details={item as Book}
+                        />
+                      );
+                    })}
+            </Carousel>
+          </div>
           <div className="text-center">
             <Link
               to={

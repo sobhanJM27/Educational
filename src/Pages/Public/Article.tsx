@@ -52,8 +52,6 @@ const Book = () => {
     };
   }, []);
 
-  console.log(data?.robots);
-
   return (
     <WithLoaderAndError {...{ data, isLoading, isError, error }}>
       {data ? (

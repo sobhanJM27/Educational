@@ -14,11 +14,6 @@ const Popup = ({ children, zIndex, parentStateControl = true }: Props) => {
 
   const handleClickOutside = useCallback((event: MouseEvent) => {
     if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
-      /*
-            i did use handleRemoveListener here but it has some problem, whenever i was switching between pages
-            this was triggered and removed the listener(because of the clicking the link) even after initial mount of effect
-            it was weird and i think this was happening due cycle of the effects of the new mounted component
-            */
       setIsActive(false);
     }
   }, []);
@@ -27,22 +22,31 @@ const Popup = ({ children, zIndex, parentStateControl = true }: Props) => {
     if (isActive) {
       document.addEventListener('click', handleClickOutside);
     }
-    /*
-        The event listener is only added when isActive is true. 
-        If the popup is closed or the component is unmounted, the listener is removed.
-        because state change cause a rerender and this effect will 
-        executed and listener won't be added also the return function of the past effect will be called
-        */
     return () => {
       handleRemoveListener();
     };
   }, [isActive, handleClickOutside]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsActive(true), 1000);
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+      if (docHeight <= 0) return;
+
+      const scrolledPercent = (scrollTop / docHeight) * 100;
+
+      if (scrolledPercent >= 30) {
+        setIsActive(true);
+        window.removeEventListener('scroll', handleScroll);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      clearTimeout(timer);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 

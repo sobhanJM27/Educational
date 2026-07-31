@@ -10,7 +10,6 @@ import MainButton from '../../Components/UI/MainButton';
 import { RadioGroup, RadioGroupItem } from '../../Components/UI/RadioGroup';
 
 const Help = () => {
-  //Popup
   const nameRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
   const timeRef = useRef<ContactTimes>('morning');

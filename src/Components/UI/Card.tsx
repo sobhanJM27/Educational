@@ -310,7 +310,7 @@ const Card = ({ details, type, theme }: Props) => {
     } else {
       const url = `/Course/${details._id}/${encodeURIComponent(details?.urlGoogle ?? details?.title).replace(/%20/g, '-')}`;
       return (
-        <div className="flex gap-4 h-[10.5rem] bg-lowPink p-4 rounded-2xl shadow-main text-black tips2:text-xs">
+        <div className="flex gap-4 h-full bg-lowPink p-4 rounded-2xl shadow-main text-black tips2:text-xs">
           <figure className="w-48 h-full relative tips2:w-20 tips2:h-20">
             {Number(details.discount) > 0 ? (
               <div className="absolute -right-3 -top-2 discount-bg p-2 flex justify-center items-center">

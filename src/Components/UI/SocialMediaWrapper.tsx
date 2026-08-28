@@ -42,7 +42,7 @@ export const socialLinks = [
   },
   {
     name: 'روبیکا',
-    link: 'https://rubika.ir/asrar_bayan',
+    link: 'https://rubika.ir/asrar_bayan_jazab',
     key: uuidv4(),
     comp: <Rubika className={className} id="Rubika" />,
   },
@@ -58,9 +58,15 @@ export const socialLinks = [
     key: uuidv4(),
     comp: <Facebook className={className} id="Facebook" />,
   },
+  // {
+  //   name: 'یوتیوب قصه گو',
+  //   link: 'https://m.youtube.com/@sabestory',
+  //   key: uuidv4(),
+  //   comp: <Youtube className={className} id="Youtube" />,
+  // },
   {
-    name: 'یوتیوب قصه گو',
-    link: 'https://m.youtube.com/@sabestory',
+    name: 'یوتیوب',
+    link: 'https://www.youtube.com/@Saberzarei.academy',
     key: uuidv4(),
     comp: <Youtube className={className} id="Youtube" />,
   },

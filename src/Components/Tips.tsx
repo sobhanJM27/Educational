@@ -5,6 +5,7 @@ import Accessibility from './UI/images/Accessibility';
 import Online from './UI/images/Online';
 import Counseling from './UI/images/Counseling';
 import { v4 as uuidv4 } from 'uuid';
+import ContactImage from './UI/images/ContactImage';
 
 type Props = {
   onClick: () => void;
@@ -34,6 +35,12 @@ const tips = [
     img: <Pay id="pay-svg" />,
     title: 'پرداخت سریع و مطمئن',
     text: 'پرداخت از هر جای ایران به صورت آنلاین بدون نیاز به مراجعه حضوری',
+    key: uuidv4(),
+  },
+  {
+    img: <ContactImage id="contact-svg" />,
+    title: 'ضمانت بازگشت وجه',
+    text: 'ما به روش ادراک ایمان داریم. اگر نتیجه‌ای که انتظار داشتید حاصل نشد، ضمانت می‌کنیم تمام وجه شما را بازگردانیم. یادگیری شما، تعهد ماست',
     key: uuidv4(),
   },
 ];

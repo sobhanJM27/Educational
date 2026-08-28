@@ -23,27 +23,27 @@ Education is designed as a modern learning experience where students can discove
 
 The application focuses on:
 
-* 📚 Course exploration
-* 📝 Educational content
-* ⚡ Fast page navigation
-* 🎯 Responsive user experience
-* 🔍 Searchable content structure
-* 📱 Mobile-friendly design
+- 📚 Course exploration
+- 📝 Educational content
+- ⚡ Fast page navigation
+- 🎯 Responsive user experience
+- 🔍 Searchable content structure
+- 📱 Mobile-friendly design
 
 ---
 
 ## ✨ Core Capabilities
 
-| Feature                   | Description                           |
-| ------------------------- | ------------------------------------- |
-| 📖 Educational Content    | Browse and explore learning materials |
-| 🔎 Smart Navigation       | Fast routing with React Router        |
+| Feature                    | Description                           |
+| -------------------------- | ------------------------------------- |
+| 📖 Educational Content     | Browse and explore learning materials |
+| 🔎 Smart Navigation        | Fast routing with React Router        |
 | ⚡ Server State Management | Powered by TanStack Query             |
-| 🧠 Global State           | Redux Toolkit                         |
-| 🎨 Modern UI              | TailwindCSS + Radix UI                |
-| 📱 Responsive Design      | Optimized for all screen sizes        |
-| 🔔 User Feedback          | Toast notifications                   |
-| 🛡 Error Handling         | React Error Boundary                  |
+| 🧠 Global State            | Redux Toolkit                         |
+| 🎨 Modern UI               | TailwindCSS + Radix UI                |
+| 📱 Responsive Design       | Optimized for all screen sizes        |
+| 🔔 User Feedback           | Toast notifications                   |
+| 🛡 Error Handling           | React Error Boundary                  |
 
 ---
 
@@ -92,31 +92,31 @@ src
 
 ### Frontend
 
-* React
-* TypeScript
-* Vite
+- React
+- TypeScript
+- Vite
 
 ### State Management
 
-* Redux Toolkit
-* TanStack Query
+- Redux Toolkit
+- TanStack Query
 
 ### UI & Styling
 
-* TailwindCSS
-* Radix UI
-* CVA
-* clsx
-* tailwind-merge
+- TailwindCSS
+- Radix UI
+- CVA
+- clsx
+- tailwind-merge
 
 ### Utilities
 
-* Axios
-* Zod
-* React Helmet Async
-* React Hot Toast
-* UUID
-* Moment Jalaali
+- Axios
+- Zod
+- React Helmet Async
+- React Hot Toast
+- UUID
+- Moment Jalaali
 
 ---
 
@@ -131,11 +131,12 @@ npm install
 
 npm run dev
 ```
+
 ---
 
 ## 🎯 Project Goals
 
-* Build a scalable educational platform
-* Maintain clean architecture
-* Deliver excellent user experience
-* Support future feature expansion
+- Build a scalable educational platform
+- Maintain clean architecture
+- Deliver excellent user experience
+- Support future feature expansion

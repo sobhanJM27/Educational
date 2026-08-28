@@ -8,6 +8,8 @@ import SumComments from '../../Components/SumComments';
 import SeoTags from '../../utils/lib/Helmet';
 import ContactForm from '../../Components/ContactForm';
 import LandingEvent from '../../Components/LandingEvent';
+import AparatCarousel from '../../Components/UI/AparatCarousel';
+import { aparatHomeItems } from '../../Items/aparatItems';
 
 const Home = () => {
   const formRef = useRef<HTMLDivElement>(null);
@@ -48,6 +50,7 @@ const Home = () => {
             id="last-books"
             inCoursePage={false}
           />
+          <AparatCarousel items={aparatHomeItems} />
           <ProductsSlider
             header="جدیدترین مقالات"
             theme="white"

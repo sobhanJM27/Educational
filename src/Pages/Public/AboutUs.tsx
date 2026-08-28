@@ -1,4 +1,6 @@
 import ParallaxHeader from '../../Components/ParallaxHeader';
+import AparatCarousel from '../../Components/UI/AparatCarousel';
+import { aparatAboutItems } from '../../Items/aparatItems';
 import { textItems } from '../../Items/footerItems';
 import SeoTags from '../../utils/lib/Helmet';
 
@@ -114,6 +116,9 @@ const AboutUs = () => {
             <h3 className="text-center text-2xl font-bold">
               با بیان قدرتمند و ارتباط مؤثر، جهان شما تغییر خواهد کرد.
             </h3>
+            <div className="w-full">
+              <AparatCarousel items={aparatAboutItems} />
+            </div>
           </div>
         </section>
       </main>

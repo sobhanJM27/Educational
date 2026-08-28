@@ -9,7 +9,9 @@ import Instagram from './UI/Icons/Instagram';
 
 const FixedContactUs = () => {
   const { isActive, toggleActive } = useClickActive(true);
-  const { isActive: phoneActive, toggleActive: togglePhoneActive } =
+  const { isActive: mohagheghActive, toggleActive: toggleMohagheghActive } =
+    useClickActive(true);
+  const { isActive: mirzaeiActive, toggleActive: toggleMirzaeiActive } =
     useClickActive(true);
   const { isActive: telegramActive, toggleActive: toggleTelegramActive } =
     useClickActive(true);
@@ -43,12 +45,24 @@ const FixedContactUs = () => {
               'p-2 bg-black rounded-full transition-all duration-500 hover:bg-[#FF9800] shadow-contactCard opacity-30 translate-x-3',
               {
                 'opacity-100 translate-x-0': isActive,
-                'bg-[#FF9800]': phoneActive,
+                'bg-purple': mohagheghActive,
               },
             )}
-            onClick={togglePhoneActive}
+            onClick={toggleMohagheghActive}
           >
             <PhoneIcon id="main-PhoneIcon" />
+          </div>
+          <div
+            className={cn(
+              'p-2 bg-black rounded-full transition-all duration-500 hover:bg-[#2196F3] shadow-contactCard opacity-30 translate-x-3',
+              {
+                'opacity-100 translate-x-0': isActive,
+                'bg-purple': mirzaeiActive,
+              },
+            )}
+            onClick={toggleMirzaeiActive}
+          >
+            <PhoneIcon id="mirzaei-PhoneIcon" />
           </div>
           <div
             className={cn(
@@ -90,17 +104,32 @@ const FixedContactUs = () => {
       </div>
       <div
         className={cn(
-          'absolute left-[60%] -top-[200px] flex pointer-events-none justify-end min-w-max z-10 px-6 pr-9 py-2 rounded-full bg-[#FF9800] text-white opacity-0 transition-all duration-300 translate-x-2',
+          'absolute left-[60%] -top-[245px] flex pointer-events-none justify-end min-w-max z-10 px-6 pr-9 py-2 rounded-full bg-purple text-white opacity-0 transition-all duration-300 translate-x-2',
           {
-            'opacity-100 translate-x-0 pointer-events-auto': phoneActive,
+            'opacity-100 translate-x-0 pointer-events-auto': mohagheghActive,
             'opacity-0 translate-x-2 pointer-events-none': !isActive,
           },
         )}
       >
-        <a className="flex items-center gap-1" href="tel:+989330042028">
-          <span>📞 تماس مستقیم با ما</span>
+        <a className="flex items-center gap-1" href="tel:09398757076">
+          <span>📞 تماس مستقیم با ما - خانوم محقق</span>
           <span>|</span>
-          <span>09330042028</span>
+          <span>09398757076</span>
+        </a>
+      </div>
+      <div
+        className={cn(
+          'absolute left-[60%] -top-[200px] flex pointer-events-none justify-end min-w-max z-10 px-6 pr-9 py-2 rounded-full bg-purple text-white opacity-0 transition-all duration-300 translate-x-2',
+          {
+            'opacity-100 translate-x-0 pointer-events-auto': mirzaeiActive,
+            'opacity-0 translate-x-2 pointer-events-none': !isActive,
+          },
+        )}
+      >
+        <a className="flex items-center gap-1" href="tel:09397757379">
+          <span>📞 تماس مستقیم با ما - خانم میرزایی</span>
+          <span>|</span>
+          <span>09397757379</span>
         </a>
       </div>
       <a

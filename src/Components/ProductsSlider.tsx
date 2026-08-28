@@ -80,9 +80,14 @@ const articleResponsive = {
     slidesToSlide: 2,
   },
   tablet: {
-    breakpoint: { max: 1160, min: 560 },
-    items: 2,
-    slidesToSlide: 2,
+    breakpoint: { max: 1160, min: 860 },
+    items: 1,
+    slidesToSlide: 1,
+  },
+  miniTablet: {
+    breakpoint: { max: 860, min: 560 },
+    items: 1,
+    slidesToSlide: 1,
   },
   mobile: {
     breakpoint: { max: 560, min: 0 },
@@ -189,7 +194,8 @@ const ProductsSlider = forwardRef<HTMLDivElement, Props>(
                     })
                 : type === 'article'
                   ? (data as Article[])
-                      ?.sort((a, b) => a.sortByNumber - b.sortByNumber)
+                      ?.splice(0, 5)
+                      .sort((a, b) => b.sortByNumber - a.sortByNumber)
                       .map((item: Article, idx: number) => {
                         return (
                           <Card

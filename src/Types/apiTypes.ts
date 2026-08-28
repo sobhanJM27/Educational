@@ -198,13 +198,7 @@ export type LandingType = {
 export type RobotsType = 'index,follow' | 'noindex,follow';
 
 export type SitemapChangeFreq =
-  | 'always'
-  | 'hourly'
-  | 'daily'
-  | 'weekly'
-  | 'monthly'
-  | 'yearly'
-  | 'never';
+  'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
 
 export type SitemapItemType = {
   _id: string;

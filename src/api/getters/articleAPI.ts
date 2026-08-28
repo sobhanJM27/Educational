@@ -20,9 +20,7 @@ export const getEducationalArticles = async (): Promise<Article[]> => {
   }
 };
 
-export const getArticle = async (
-  bookID: string
-): Promise<Article> => {
+export const getArticle = async (bookID: string): Promise<Article> => {
   const endpoint = Endpoints.getArticle(bookID);
 
   console.log('Calling getArticle API...');

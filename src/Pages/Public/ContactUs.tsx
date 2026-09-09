@@ -1,4 +1,4 @@
-import ContactForm from '../../Components/ContactForm';
+// import ContactForm from '../../Components/ContactForm';
 import ParallaxHeader from '../../Components/ParallaxHeader';
 import SeoTags from '../../utils/lib/Helmet';
 
@@ -46,7 +46,15 @@ const ContactUs = () => {
             </p>
           </div>
         </section>
-        <ContactForm type="contactUs" />
+        <div className="subHero:w-full w-2/3 mx-auto h-[700px] p-4 overflow-hidden rounded-xl shadow">
+          <iframe
+            src="https://myrasad.com/l/akademizarei/consulting-contactus?embed=1" 
+            className="h-full w-full"
+            allowFullScreen
+            title="aparat-video"
+          />
+        </div>
+        {/* <ContactForm type="contactUs" /> */}
       </main>
     </>
   );

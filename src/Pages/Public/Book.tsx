@@ -82,14 +82,14 @@ const Book = () => {
     if (data) {
       return {
         digitPrice: data.finalPriceVirtual,
-        physicPrice: data.finalPricePhysical,
+        // physicPrice: data.finalPricePhysical,
         image: BASE_URL + data.images[0],
         pdf: '/' + data.link,
       };
     } else {
       return {
         digitPrice: 0,
-        physicPrice: 0,
+        // physicPrice: 0,
         image: '',
         pdf: '/',
       };

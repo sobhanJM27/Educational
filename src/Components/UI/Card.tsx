@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { memo, useCallback } from 'react';
 import MainButton from './MainButton';
 import BuyComp from './BuyComp';
 import { Link } from 'react-router-dom';
@@ -6,10 +6,10 @@ import { cn } from '../../utils/lib/Cn';
 import OwnerProfile from './OwnerProfile';
 import { Book, Course, Article } from '../../Types/apiTypes';
 import { usePersianNums } from '../../hooks/usePersianNums';
-import IconWrapper from './IconWrapper';
-import BookIcon from './Icons/Book';
-import Pdf from './Icons/Pdf';
-import useCurrentTab from '../../hooks/useCurrentTab';
+// import IconWrapper from './IconWrapper';
+// import BookIcon from './Icons/Book';
+// import Pdf from './Icons/Pdf';
+// import useCurrentTab from '../../hooks/useCurrentTab';
 import { BASE_URL } from '../../api/axios';
 import useAddToBasket from '../../hooks/useAddToBasket';
 import useAuth from '../../hooks/useAuth';
@@ -128,21 +128,21 @@ const Card = ({ details, type, theme }: Props) => {
       </div>
     );
   } else if (type === 'book') {
-    const [price, setPrice] = useState<number | string>(details.pricePhysical);
-    const [finalPrice, setFinalPrice] = useState<number | string>(
-      details.finalPricePhysical,
-    );
-    const { activeTab, handleClick } = useCurrentTab(0);
+    // const [price, setPrice] = useState<number | string>(details.pricePhysical);
+    // const [finalPrice, setFinalPrice] = useState<number | string>(
+    //   details.finalPricePhysical,
+    // );
+    // const { activeTab, handleClick } = useCurrentTab(0);
 
-    const clickHandler = (
-      finalPrice: number | string,
-      price: number | string,
-      idx: number,
-    ) => {
-      setPrice(price);
-      setFinalPrice(finalPrice);
-      handleClick(idx, activeTab);
-    };
+    // const clickHandler = (
+    //   // finalPrice: number | string,
+    //   // price: number | string,
+    //   idx: number,
+    // ) => {
+    //   // setPrice(price);
+    //   // setFinalPrice(finalPrice);
+    //   handleClick(idx, activeTab);
+    // };
     const url = `/Book/${details._id}/${encodeURIComponent(details?.urlGoogle ?? details?.title).replace(/%20/g, '-')}`;
     return (
       <div className="flex flex-col gap-6 items-center">
@@ -167,13 +167,13 @@ const Card = ({ details, type, theme }: Props) => {
         </div>
         <div className="flex flex-col gap-2 items-center">
           <div className="flex gap-2 items-center">
-            <IconWrapper
+            {/* <IconWrapper
               className={cn('p-2 bg-purple', { 'bg-white': activeTab === 0 })}
               title="نسخه فیزیکی"
               onClick={() =>
                 clickHandler(
-                  details.finalPricePhysical,
-                  details.pricePhysical,
+                  // details.finalPricePhysical,
+                  // details.pricePhysical,
                   0,
                 )
               }
@@ -183,13 +183,13 @@ const Card = ({ details, type, theme }: Props) => {
                   'fill-purple': activeTab === 0,
                 })}
               />
-            </IconWrapper>
-            <IconWrapper
+            </IconWrapper> */}
+            {/* <IconWrapper
               className={cn('p-2 bg-purple', { 'bg-white': activeTab === 1 })}
               title="نسخه دیجیتالی"
-              onClick={() =>
-                clickHandler(details.finalPriceVirtual, details.priceVirtual, 1)
-              }
+              // onClick={() =>
+              //   clickHandler(details.finalPriceVirtual, details.priceVirtual, 1)
+              // }
             >
               <Pdf
                 id="book-pdf"
@@ -197,15 +197,15 @@ const Card = ({ details, type, theme }: Props) => {
                   'fill-purple': activeTab === 1,
                 })}
               />
-            </IconWrapper>
+            </IconWrapper> */}
           </div>
           {Number(details.discount) > 0 ? (
             <span className="line-through opacity-50 text-xs">
-              {usePersianNums(price, true)} تومان
+              {/* {usePersianNums(price, true)} تومان */}
             </span>
           ) : null}
           <span className="font-bold text-purple">
-            {usePersianNums(finalPrice, true)} تومان
+            {/* {usePersianNums(finalPrice, true)} تومان */}
           </span>
         </div>
         <Link to={url}>

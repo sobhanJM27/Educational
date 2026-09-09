@@ -6,10 +6,11 @@ import Tips from '../../Components/Tips';
 import ProductsSlider from '../../Components/ProductsSlider';
 import SumComments from '../../Components/SumComments';
 import SeoTags from '../../utils/lib/Helmet';
-import ContactForm from '../../Components/ContactForm';
+// import ContactForm from '../../Components/ContactForm';
 import LandingEvent from '../../Components/LandingEvent';
 import AparatCarousel from '../../Components/UI/AparatCarousel';
 import { aparatHomeItems } from '../../Items/aparatItems';
+import ConsultingForm from '../../Components/CousultingForm';
 
 const Home = () => {
   const formRef = useRef<HTMLDivElement>(null);
@@ -61,7 +62,16 @@ const Home = () => {
           />
           <SumComments type="home" />
           <div ref={formRef}></div>
-          <ContactForm type="home" />
+          <ConsultingForm />
+          {/* <div className="subHero:w-full w-2/3 mx-auto h-[450px] p-2 overflow-hidden rounded-xl shadow">
+              <iframe
+                src="https://myrasad.com/l/akademizarei/consulting-homepage?embed=1" 
+                className="h-full w-full"
+                allowFullScreen
+                title="aparat-video"
+              />
+          </div> */}
+          {/* <ContactForm type="home" /> */}
         </div>
       </main>
     </>

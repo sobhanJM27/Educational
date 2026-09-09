@@ -134,4 +134,7 @@ export const Endpoints = {
   getSitemap: `/admin/sitemap/list`,
   addSitemap: `/admin/sitemap/add`,
   removeSitemap: (id: string) => `/admin/sitemap/remove/${id}`,
+
+  // consulting endpoints
+  addConsultingLead: `/api/leads/consulting-lead`,
 };

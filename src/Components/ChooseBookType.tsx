@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import MainButton from './UI/MainButton';
-import { usePersianNums } from '../hooks/usePersianNums';
+// import { usePersianNums } from '../hooks/usePersianNums';
 // import IconWrapper from "./UI/IconWrapper";
 // import Book from "./UI/Icons/Book";
 // import Pdf from "./UI/Icons/Pdf";
@@ -15,12 +15,12 @@ export type BookProps = {
 };
 
 const ChooseBookType = ({
-  digitPrice,
-  physicPrice,
+  // digitPrice,
+  // physicPrice,
   image,
   pdf,
-  buyHandler,
-  isInBasket,
+  // buyHandler,
+  // isInBasket,
 }: BookProps & {
   buyHandler: () => void;
   isInBasket: boolean;
@@ -40,13 +40,14 @@ const ChooseBookType = ({
         <img src={image} alt="book" className="w-32 h-40 rounded-xl" />
         <div className="flex flex-col gap-4 items-center">
           <div className="flex flex-col gap-2">
-            <div className="flex gap-4">
+            {/* <div className="flex gap-4">
               <span>نسخه چاپی : </span>
               <span>{usePersianNums(physicPrice, true)} تومان</span>
-            </div>
+            </div> */}
             <div className="flex gap-4">
-              <span>نسخه PDF : </span>
-              <span>{usePersianNums(digitPrice, true)} تومان</span>
+              <span>نسخه PDF  </span>
+              {/* <span>نسخه PDF : </span> */}
+              {/* <span>{usePersianNums(digitPrice, true)} تومان</span> */}
             </div>
           </div>
           {/* <span>نوع کتاب را مشخص کنید</span> */}
@@ -84,7 +85,7 @@ const ChooseBookType = ({
         </div>
       </div>
       <div className="flex flex-col gap-2">
-        {isInBasket ? (
+        {/* {isInBasket ? (
           <p className="self-center">هم اکنون در سبد خرید شما</p>
         ) : (
           <MainButton
@@ -94,10 +95,10 @@ const ChooseBookType = ({
             className="self-center w-full max-w-none"
             onClick={() => buyHandler()}
           />
-        )}
+        )} */}
         <a href={'/' + pdf}>
           <MainButton
-            text="لینک خرید نسخه PDF"
+            text="لینک نسخه PDF"
             intent="purple"
             size="medium"
             className="self-center w-full max-w-none"

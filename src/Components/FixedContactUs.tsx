@@ -112,7 +112,7 @@ const FixedContactUs = () => {
         )}
       >
         <a className="flex items-center gap-1" href="tel:09398757076">
-          <span>📞 تماس مستقیم با ما - خانوم محقق</span>
+          <span>📞 تماس مستقیم با ما - خانم محقق</span>
           <span>|</span>
           <span>09398757076</span>
         </a>

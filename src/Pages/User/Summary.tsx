@@ -270,6 +270,22 @@ const Summary = () => {
       }),
     [booksQuery.data],
   );
+  const freeRows =
+          <TableRow>
+            <><TableCell className="text-right">
+              {usePersianNums(1)}
+            </TableCell><TableCell className="text-center">دوره رایگان فن بیان و اعتماد به نفس</TableCell><TableCell className="text-center">
+                <Link
+                  to={`/User/Free`}
+                >
+                  <MainButton
+                    className="bg-black hover:bg-purple max-w-fit"
+                    text={`مشاهده دوره`}
+                    intent="purple"
+                    size="medium" />
+                </Link>
+              </TableCell></>
+          </TableRow>
 
   return (
     <main className="p-4 flex flex-col gap-8">
@@ -328,6 +344,13 @@ const Summary = () => {
           </>
         ) : null}
       </WithLoaderAndError>
+      <TableWrapper
+        caption="دوره های رایگان خریداری شده توسط شما"
+        title="دوره های رایگان"
+        headers={['دوره']}
+        key={'free'}
+        tableRows={freeRows}
+      />
       <WithLoaderAndError
         data={onlineQuery.data}
         error={onlineQuery.error}

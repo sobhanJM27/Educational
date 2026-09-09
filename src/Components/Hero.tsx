@@ -23,7 +23,7 @@ const Hero = () => {
             <MainButton
               intent={'black'}
               size="small"
-              text="آموزش تخصصی فن بیان برای تمام سنین"
+              text="بسته های ویژه فن بیان و سخنوری"
               className="max-w-none p-4"
             />
           </Link>

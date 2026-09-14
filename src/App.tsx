@@ -37,6 +37,7 @@ const BaleForm = lazy(() => import('./Pages/Public/BaleForm'));
 const ConsultingLanding = lazy(
   () => import('./Pages/Public/ConsultingLanding'),
 );
+const FreeCourse = lazy(() => import('./Pages/Public/FreeCourse'));
 
 const Admin = lazy(() => import('./Pages/Admin/Admin'));
 const AdminSummary = lazy(() => import('./Pages/Admin/AdminSummary'));
@@ -114,13 +115,21 @@ function App() {
                 }
               />
               <Route
-                path="/Free-Course"
+                path="/Free-Course-Form"
                 element={
                   <ErrorBoundary fallback={<ErrorComp />}>
                     <Suspense fallback={<Loader />}>
                       <ConsultingLanding />
                     </Suspense>
                   </ErrorBoundary>
+                }
+              />
+              <Route
+                path="Free-Course"
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <FreeCourse />
+                  </Suspense>
                 }
               />
               <Route

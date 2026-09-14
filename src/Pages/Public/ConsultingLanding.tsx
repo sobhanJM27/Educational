@@ -37,7 +37,7 @@ const ConsultingLanding = () => {
     try {
       await addConsultingLead({ token, ...auth }, { fullName, phone });
       toast.success('اطلاعات شما با موفقیت ثبت شد');
-      navigate('/User/Free');
+      navigate('/Free-Course');
     } catch (error) {
       console.log(error);
       toast.error('خطا در برقراری ارتباط');

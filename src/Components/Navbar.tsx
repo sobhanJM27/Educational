@@ -25,6 +25,8 @@ const Navbar = () => {
   const { activeTab, handleMouseEnter, handleMouseLeave } =
     useCurrentTab(currentTabIndex);
 
+  const hidePopup = window.location.pathname === '/free-course';
+
   const [sideBar, setSideBar] = useState<boolean>(false);
 
   const { Auth, role } = useAuth();
@@ -146,39 +148,41 @@ const Navbar = () => {
         </nav>
         <Sidebar show={sideBar} func={() => setSideBar((prev) => !prev)} />
       </header>
-      <Popup zIndex={100} parentStateControl={popUpState}>
-        <div className="flex flex-col gap-8 items-center text-center max-w-[24.375rem] min-w-[20rem] tips2:min-w-[15rem]">
-          <HeadTitle fontSize="1.1rem">
-            🚀 یک تصمیم هوشمندانه برای آینده شما!
-          </HeadTitle>
-          <p className="text-base">
-            💡 مشاوره رایگان + تخفیف ویژه برای انتخاب بهترین مسیر رشد و موفقیت
-          </p>
-          <p className="flex flex-col gap-1">
-            <span>🎯 مهارت‌های ضروری برای پیشرفت:</span>
-            <span>✅ ارتباط مؤثر و فن بیان</span>
-            <span>✅ اعتماد به نفس و رشد فردی</span>
-            <span>✅ هوش مصنوعی و آینده شغلی</span>
-          </p>
-          <p>
-            📌 همین حالا اطلاعات خود را وارد کنید تا از مشاوره رایگان بهره‌مند
-            شوید!
-          </p>
-          <iframe
-            src="https://myrasad.com/l/akademizarei/consulting-homepage?embed=1"
-            style={{
-              width: '100%',
-              height: '620px',
-              border: 0,
-              display: 'block',
-              overflow: 'hidden',
-            }}
-            loading="lazy"
-            scrolling="no"
-            title="فرم مشاوره رایگان"
-          />
-        </div>
-      </Popup>
+      {!hidePopup && (
+        <Popup zIndex={100} parentStateControl={popUpState}>
+          <div className="flex flex-col gap-8 items-center text-center max-w-[24.375rem] min-w-[20rem] tips2:min-w-[15rem]">
+            <HeadTitle fontSize="1.1rem">
+              🚀 یک تصمیم هوشمندانه برای آینده شما!
+            </HeadTitle>
+            <p className="text-base">
+              💡 مشاوره رایگان + تخفیف ویژه برای انتخاب بهترین مسیر رشد و موفقیت
+            </p>
+            <p className="flex flex-col gap-1">
+              <span>🎯 مهارت‌های ضروری برای پیشرفت:</span>
+              <span>✅ ارتباط مؤثر و فن بیان</span>
+              <span>✅ اعتماد به نفس و رشد فردی</span>
+              <span>✅ هوش مصنوعی و آینده شغلی</span>
+            </p>
+            <p>
+              📌 همین حالا اطلاعات خود را وارد کنید تا از مشاوره رایگان بهره‌مند
+              شوید!
+            </p>
+            <iframe
+              src="https://myrasad.com/l/akademizarei/consulting-homepage?embed=1"
+              style={{
+                width: '100%',
+                height: '620px',
+                border: 0,
+                display: 'block',
+                overflow: 'hidden',
+              }}
+              loading="lazy"
+              scrolling="no"
+              title="فرم مشاوره رایگان"
+            />
+          </div>
+        </Popup>
+      )}
     </>
   );
 };

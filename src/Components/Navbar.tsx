@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import LogoIcon from './UI/Icons/Logo';
 import SearchInput from './UI/SearchInput';
 import { Link } from 'react-router-dom';
@@ -18,23 +18,12 @@ import { useAppSelector } from '../hooks/useReduxHooks';
 import useAuth from '../hooks/useAuth';
 import Popup from './Popup';
 import HeadTitle from './UI/HeadTitle';
-import MainInput from './UI/MainInput';
-import toast from 'react-hot-toast';
-import useInputValidator from '../hooks/useInputValidator';
-import { addContact } from '../api/contactUs/contactAPI';
-import { useEnglishNums, usePersianNums } from '../hooks/usePersianNums';
-import { RadioGroup, RadioGroupItem } from './UI/RadioGroup';
-import { ContactTimes } from '../Types/ContactTimeType';
 
 const Navbar = () => {
-  const [popUpState, setPopUpState] = useState<boolean>(true);
+  const [popUpState] = useState<boolean>(true);
   const currentTabIndex = useCurrentUrlTab(tabs);
   const { activeTab, handleMouseEnter, handleMouseLeave } =
     useCurrentTab(currentTabIndex);
-
-  const nameRef = useRef<HTMLInputElement>(null);
-  const phoneRef = useRef<HTMLInputElement>(null);
-  const timeRef = useRef<ContactTimes>('morning');
 
   const [sideBar, setSideBar] = useState<boolean>(false);
 
@@ -53,44 +42,6 @@ const Navbar = () => {
   } else if (pathname.includes('Login')) {
     hidden = true;
   }
-
-  const handleTimeChange = (val: ContactTimes) => {
-    timeRef.current = val;
-  };
-
-  const submitHandler = async () => {
-    const name = nameRef.current!.value;
-    const nameMsg = useInputValidator(name);
-    if (nameMsg) {
-      toast.error(nameMsg);
-      return;
-    }
-    const phone = useEnglishNums(phoneRef.current!.value);
-    const phoneMsg = useInputValidator(phone, 'phone');
-    if (phoneMsg) {
-      toast.error(phoneMsg);
-      return;
-    }
-    const time = timeRef.current;
-    const loader = toast.loading('در حال ثبت درخواست شما');
-    try {
-      await addContact({
-        name,
-        phone,
-        time,
-        subject: '',
-        text: '',
-        type: 'home',
-      });
-      toast.success('درخواست شما با موفقیت ثبت شد');
-      setPopUpState(false);
-    } catch (error) {
-      console.log(error);
-      toast.error('خطا در برقرای ارتباط');
-    } finally {
-      toast.dismiss(loader);
-    }
-  };
 
   return (
     <>
@@ -213,55 +164,18 @@ const Navbar = () => {
             📌 همین حالا اطلاعات خود را وارد کنید تا از مشاوره رایگان بهره‌مند
             شوید!
           </p>
-          <div className="flex flex-col gap-2 w-full">
-            <MainInput
-              ref={nameRef}
-              className="flex-1 w-full max-w-none"
-              placeHolder="نام و نام خانوادگی"
-              id="name"
-              intent="login"
-              inputSize="small"
-            />
-            <MainInput
-              ref={phoneRef}
-              className="flex-1 w-full max-w-none"
-              placeHolder="شماره همراه"
-              id="phone"
-              intent="login"
-              inputSize="small"
-            />
-            <div className="flex flex-col gap-2 items-center">
-              <h2>زمان پیشنهادی تماس با شما</h2>
-              <RadioGroup
-                defaultValue="morning"
-                className="flex gap-3 books:flex-col"
-                onValueChange={(val) => handleTimeChange(val as ContactTimes)}
-              >
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="morning"
-                    id="morning"
-                    key={'morning'}
-                  />
-                  <label htmlFor="morning">{usePersianNums('9-14')}</label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="evening"
-                    id="evening"
-                    key={'evening'}
-                  />
-                  <label htmlFor="evening">{usePersianNums('16-21')}</label>
-                </div>
-              </RadioGroup>
-            </div>
-          </div>
-          <MainButton
-            className="max-w-none"
-            onClick={submitHandler}
-            intent="purple"
-            size="small"
-            text="ثبت درخواست"
+          <iframe
+            src="https://myrasad.com/l/akademizarei/consulting-homepage?embed=1"
+            style={{
+              width: '100%',
+              height: '620px',
+              border: 0,
+              display: 'block',
+              overflow: 'hidden',
+            }}
+            loading="lazy"
+            scrolling="no"
+            title="فرم مشاوره رایگان"
           />
         </div>
       </Popup>

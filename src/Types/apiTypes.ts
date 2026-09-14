@@ -208,3 +208,8 @@ export type SitemapItemType = {
   createdAt?: string;
   updatedAt?: string;
 };
+
+export type ConsultingLeadType = {
+  fullName: string;
+  phone: string;
+};

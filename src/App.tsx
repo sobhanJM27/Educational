@@ -34,6 +34,9 @@ const FailedBuy = lazy(() => import('./Pages/Public/FailedBuy'));
 const Help = lazy(() => import('./Pages/Public/Help'));
 const Landing = lazy(() => import('./Pages/Public/Landing'));
 const BaleForm = lazy(() => import('./Pages/Public/BaleForm'));
+const ConsultingLanding = lazy(
+  () => import('./Pages/Public/ConsultingLanding'),
+);
 
 const Admin = lazy(() => import('./Pages/Admin/Admin'));
 const AdminSummary = lazy(() => import('./Pages/Admin/AdminSummary'));
@@ -70,7 +73,8 @@ function App() {
 
   const hideLayout =
     window.location.pathname === '/landing' ||
-    window.location.pathname === '/bale-form';
+    window.location.pathname === '/bale-form' ||
+    window.location.pathname === '/consulting-landing';
 
   return (
     <>
@@ -105,6 +109,16 @@ function App() {
                   <ErrorBoundary fallback={<ErrorComp />}>
                     <Suspense fallback={<Loader />}>
                       <BaleForm />
+                    </Suspense>
+                  </ErrorBoundary>
+                }
+              />
+              <Route
+                path="/Free-Course"
+                element={
+                  <ErrorBoundary fallback={<ErrorComp />}>
+                    <Suspense fallback={<Loader />}>
+                      <ConsultingLanding />
                     </Suspense>
                   </ErrorBoundary>
                 }
